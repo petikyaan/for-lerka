@@ -21,7 +21,7 @@
 
     .screen.active { opacity: 1; pointer-events: all; }
 
-    h1 { font-size: 2.5rem; margin-bottom: 20px; text-shadow: 0 0 15px rgba(0,0,0,0.3); }
+    h1 { font-size: 2.4rem; margin-bottom: 20px; text-shadow: 0 0 15px rgba(0,0,0,0.3); }
 
     p { font-size: 18px; margin-bottom: 20px; opacity: 0.95; max-width: 700px; line-height: 1.6; white-space: pre-line; }
 
@@ -41,7 +41,7 @@
     .reason-list { width: 90%; max-width: 500px; display: flex; flex-direction: column; gap: 12px; }
 
     .reason-btn {
-      background: rgba(255,255,255,0.9); color: #ff4d6d; padding: 15px; border-radius: 16px;
+      background: rgba(255,255,255,0.95); color: #ff4d6d; padding: 15px; border-radius: 16px;
       font-size: 16px; cursor: pointer; border: none;
     }
 
@@ -75,7 +75,7 @@
     <button class="next-btn" onclick="nextScreen2()">Дальше →</button>
   </div>
 
-  <!-- Screen 3 NEW -->
+  <!-- Screen 3 -->
   <div class="screen" id="screen3">
     <h1>Почему я тебя люблю 💗</h1>
     <p style="font-size:16px; opacity:0.9;">Нажми на кнопки ниже, чтобы раскрыть каждую причину ✨</p>
@@ -85,27 +85,22 @@
         <button class="reason-btn" onclick="toggleText(0)">Твоя преданность</button>
         <div class="reason-text">Ты никогда не сдаёшься, даже когда трудно</div>
       </div>
-
       <div>
         <button class="reason-btn" onclick="toggleText(1)">Твоя нежность</button>
         <div class="reason-text">Ты даришь мне любовь каждый день</div>
       </div>
-
       <div>
         <button class="reason-btn" onclick="toggleText(2)">Твой юмор</button>
         <div class="reason-text">Ты всегда можешь рассмешить меня</div>
       </div>
-
       <div>
         <button class="reason-btn" onclick="toggleText(3)">Твоя красота</button>
         <div class="reason-text">Ты прекрасна во всём</div>
       </div>
-
       <div>
         <button class="reason-btn" onclick="toggleText(4)">Твоё сердце</button>
         <div class="reason-text">У тебя самое доброе сердце</div>
       </div>
-
       <div>
         <button class="reason-btn" onclick="toggleText(5)">Наше будущее</button>
         <div class="reason-text">Я хочу провести его с тобой</div>
@@ -115,7 +110,7 @@
     <button class="next-btn" onclick="nextScreen3()">Дальше →</button>
   </div>
 
-  <!-- Screen 4 (poem) -->
+  <!-- Screen 4 -->
   <div class="screen" id="screen4">
     <h1>Лерка моя… 💞</h1>
     <p>Лерка моя, 
@@ -150,58 +145,15 @@
 
 Потому что для меня
 это и есть любовь.</p>
+
+    <button class="next-btn" onclick="nextScreen4()">Дальше →</button>
   </div>
 
-  <script>
-    const noBtn = document.getElementById('noBtn');
-
-    noBtn.addEventListener('mouseenter', () => {
-      const x = Math.random() * (window.innerWidth - 100);
-      const y = Math.random() * (window.innerHeight - 50);
-      noBtn.style.position = 'absolute';
-      noBtn.style.left = x + 'px';
-      noBtn.style.top = y + 'px';
-    });
-
-    function nextScreen() {
-      screen1.classList.remove('active');
-      screen2.classList.add('active');
-      createHearts();
-    }
-
-    function nextScreen2() {
-      screen2.classList.remove('active');
-      screen3.classList.add('active');
-    }
-
-    function nextScreen3() {
-      screen3.classList.remove('active');
-      screen4.classList.add('active');
-    }
-
-    function toggleText(index) {
-      const texts = document.querySelectorAll('.reason-text');
-      texts[index].style.display = texts[index].style.display === 'block' ? 'none' : 'block';
-    }
-
-    function createHearts() {
-      setInterval(() => {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.innerText = '💖';
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 6000);
-      }, 300);
-    }
-  </script>
-
-  <!-- Screen 5 (final) -->
+  <!-- Screen 5 -->
   <div class="screen" id="screen5">
-    <h1>Ты - самое лучшее, что случалось в моей жизни 💖</h1>
-    <p style="font-size:22px; margin-top:20px;">Я тебя очень люблю</p>
-    <p style="margin-top:10px; opacity:0.9;">с любовью, Тигран</p>
+    <h1>Ты — самое лучшее, что случалось в моей жизни 💖</h1>
+    <p style="font-size:22px;">Я тебя очень люблю</p>
+    <p>с любовью, Тигран</p>
   </div>
 
   <script>
@@ -216,24 +168,24 @@
     });
 
     function nextScreen() {
-      screen1.classList.remove('active');
-      screen2.classList.add('active');
+      document.getElementById('screen1').classList.remove('active');
+      document.getElementById('screen2').classList.add('active');
       createHearts();
     }
 
     function nextScreen2() {
-      screen2.classList.remove('active');
-      screen3.classList.add('active');
+      document.getElementById('screen2').classList.remove('active');
+      document.getElementById('screen3').classList.add('active');
     }
 
     function nextScreen3() {
-      screen3.classList.remove('active');
-      screen4.classList.add('active');
+      document.getElementById('screen3').classList.remove('active');
+      document.getElementById('screen4').classList.add('active');
     }
 
     function nextScreen4() {
-      screen4.classList.remove('active');
-      screen5.classList.add('active');
+      document.getElementById('screen4').classList.remove('active');
+      document.getElementById('screen5').classList.add('active');
     }
 
     function toggleText(index) {
@@ -256,3 +208,4 @@
 
 </body>
 </html>
+
